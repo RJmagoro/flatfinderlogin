@@ -1,0 +1,71 @@
+
+
+
+<ion-content class="background" >
+  <div *ngIf = "display == 0">
+    <ion-card>
+      <ion-card-header>Sign Up client
+      </ion-card-header>
+      <ion-card-content>
+        <ion-list no-line>
+          <ion-item >
+         
+            <ion-input type="text" placeholder="First Name"></ion-input>
+  
+          </ion-item>
+          <ion-item>
+              
+              <ion-input type="text" placeholder="Last Name"></ion-input>
+          </ion-item>
+          <ion-item>
+           
+              <ion-input type="number" placeholder="Cell Number"></ion-input>
+          </ion-item>
+          <ion-item>
+            
+              <ion-input type="email" placeholder="Email"></ion-input>
+    
+            </ion-item>
+            <ion-item>
+            
+                <ion-input  type="password" placeholder="Password"></ion-input>
+            </ion-item>
+            <button ion-button round outline color="primary" (click)="signup()">SignUP</button>OR
+            <button ion-button round outline color="primary" (click)="login()">Login</button>
+  
+        </ion-list>
+      </ion-card-content>
+  
+    </ion-card>
+  </div>
+  
+  <div *ngIf = " display == 1" >
+
+      <ion-card [formGroup]="client">
+          <ion-card-header>Login client
+          </ion-card-header>
+          <ion-card-content>
+            <ion-list no-line>
+              
+              <ion-item>
+                
+                  <ion-input type="email" placeholder="Email"></ion-input>
+        
+                </ion-item>
+                <ion-item>
+                
+                    <ion-input  type="password" placeholder="Password"></ion-input>
+                </ion-item>
+              
+                <button ion-button round outline color="primary" (click)="login()">Login</button>
+      
+            </ion-list>
+          </ion-card-content>
+      
+        </ion-card>
+
+
+  </div>
+  
+  </ion-content>
+  

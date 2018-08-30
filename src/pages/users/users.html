@@ -1,0 +1,88 @@
+
+
+
+<ion-content class="background" >
+  <form [formGroup]="users" (ngSubmit)="admin()">
+  <div *ngIf = "display == 0">
+
+  
+  <ion-card >
+    <ion-card-header>Sign Up Landlord
+    </ion-card-header>
+    <ion-card-content>
+      <ion-list no-line>
+        <ion-item >
+       
+          <ion-input type="text" placeholder="First Name"></ion-input>
+
+        </ion-item>
+        <ion-item>
+            
+            <ion-input type="text" placeholder="Last Name"></ion-input>
+        </ion-item>
+        <ion-item>
+         
+            <ion-input type="number" placeholder="Cell Number"></ion-input>
+        </ion-item>
+        <ion-item>
+          
+            <ion-input formControlName="email" type="email" placeholder="Email"></ion-input>
+  
+          </ion-item>
+        
+        <ion-item *ngIf="users.controls.email.invalid && users.controls.email.dirty">
+            <p>Please enter Email</p>
+            </ion-item>
+          <ion-item>
+          
+              <ion-input formControlName="password"  type="password" placeholder="Password"></ion-input>
+          </ion-item>
+          <ion-item *ngIf="users.controls.password.invalid && users.controls.password.dirty">
+              <p>Please enter Password</p>
+    
+            </ion-item>
+          <button ion-button round outline color="primary" (click)="signup()">SignUP</button>OR
+          <button ion-button round outline color="primary" (click)="login()">Login</button>
+
+      </ion-list>
+    </ion-card-content>
+
+  </ion-card>
+  <button class="bottom" ion-button clear full color="light">Don't have an account? Sign up</button>
+</div>
+<div *ngIf="display ==1">
+   
+
+        <ion-card>
+            <ion-card-header>Login Admin
+            </ion-card-header>
+            <ion-card-content>
+              <ion-list no-line>
+                
+                <ion-item>
+                    <ion-label stacked>Email</ion-label>
+                    <ion-input type="email" placeholder="Email"></ion-input>
+          
+                  </ion-item>
+                  <ion-item>
+                      <ion-label stacked>Password</ion-label>
+                  
+                      <ion-input  type="password" placeholder="Password"></ion-input>
+                  </ion-item>
+                
+                  <button ion-button round outline color="primary" (click)="home()">Login</button>
+        
+              </ion-list>
+            </ion-card-content>
+        
+          </ion-card>
+  
+  
+    
+
+</div>
+<div *ngIf="display ==2" class="btn">
+  <button ion-button round outline color="primary" ><ion-icon name="home"></ion-icon></button>
+</div>
+</form>
+</ion-content>
