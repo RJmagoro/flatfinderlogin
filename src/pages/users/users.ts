@@ -8,7 +8,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
  */
-
+declare var firebase;
 @IonicPage()
 @Component({
   selector: 'page-users',
@@ -17,28 +17,50 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 export class UsersPage {
   users:FormGroup;
   display = 0;
+  email:string;
+  password;
 
   constructor(public navCtrl: NavController, public navParams: NavParams,private fb: FormBuilder) {
   this.users =this.fb.group({
-    firstname:['',Validators.required],
-    lastname:['',Validators.required],
-    cellnumber:['',Validators.required],
-    email:['',Validators.required],
-    password:['',Validators.required],
+    firstname:['',Validators.compose([Validators.maxLength(25),Validators.pattern('[a-zA-Z]'),Validators.required])],
+    lastname:['',Validators.compose([Validators.maxLength(25),Validators.pattern('[a-zA-Z]'),Validators.required])],
+    cellnumber:['',Validators.compose([Validators.maxLength(10),Validators.pattern('[0-9]'),Validators.required])],
+    email:['',Validators.compose([Validators.maxLength(25),Validators.pattern('[a-zA-Z]'),Validators.required])],
+    password:['',Validators.compose([Validators.maxLength(25),Validators.pattern('[a-zA-Z0-9]'),Validators.required])],
   })
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad UsersPage');
   }
-  login(){
+  logins(){
     this.display = 1;
+    
   }
   home(){
-    this.navCtrl.push("HomePage");
+    firebase.auth().signInWithEmailAndPassword(this.email,this.password).then(user => {
+      this.navCtrl.push("LoginPage")
+    })
+   }
+  signups(){
+    firebase.auth().createUserWithEmailAndPassword(this.email,this.password).then(user => {
+      this.navCtrl.push("SignupPage") 
+    })
+    
   }
-  signup(){
-    this.navCtrl.push("HomePage")
-  }
+  reset(){
+    
+      var auth = firebase.auth();
+      var emailAddress = this.email;
+      
+      auth.sendPasswordResetEmail(emailAddress).then(function() {
+        this.navCtrl.push("LoginPage");
+        // Email sent.
+      }).catch(function(error) {
+        // An error happened.
+      });
+    }
+  
+  
 
 }

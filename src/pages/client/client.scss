@@ -1,5 +1,10 @@
 .background{
-    background-image: url(../../assets/imgs/52392_1478584515.jpeg)
+    background-image: url(../../assets/imgs/52392_1478584515.jpeg);
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    
+    
 }
 .scroll-content{
     align-content: center;
@@ -22,6 +27,11 @@ ion-card.card{
 a, p,
 ion-card-header.card-header{
     color: #fff!important;
+    
+        letter-spacing: 3px;
+        line-height: 2px;
+        
+
 }
 .list > .item-block:first-child{
     border: medium none;
@@ -56,7 +66,11 @@ ion-card-header.card-header{
     .text-input,{
         color:#fff;
 
-    }}
+    }
+}
+
+
+
 
 
 }

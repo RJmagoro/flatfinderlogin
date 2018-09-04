@@ -2,31 +2,41 @@
 
 
 <ion-content class="background" >
-  <form [formGroup]="users" (ngSubmit)="admin()">
-  <div *ngIf = "display == 0">
-
-  
+  <form *ngIf ="display == 0" [formGroup]="users" (ngSubmit)="signups(signup)">
+    
   <ion-card >
     <ion-card-header>Sign Up Landlord
     </ion-card-header>
     <ion-card-content>
       <ion-list no-line>
-        <ion-item >
-       
-          <ion-input type="text" placeholder="First Name"></ion-input>
-
-        </ion-item>
-        <ion-item>
-            
-            <ion-input type="text" placeholder="Last Name"></ion-input>
-        </ion-item>
-        <ion-item>
+          <ion-item >
          
-            <ion-input type="number" placeholder="Cell Number"></ion-input>
-        </ion-item>
+            
+            <ion-input formControlName="firstname" type="text" placeholder="First Name"></ion-input>
+    
+            </ion-item>
+            <ion-item *ngIf="users.controls.firstname.invalid && users.controls.firstname.dirty">
+              <p>Please enter First Name</p>
+            </ion-item>
+            
+            <ion-item>
+                
+                <ion-input formControlNaame="lastname" type="text" placeholder="Last Name"></ion-input>
+            </ion-item>
+            <ion-item *ngIf="users.controls.lastname.invalid && users.controls.lastname.dirty">
+                <p>Please enter Last Name</p>
+                </ion-item>
+              
+            <ion-item>
+             
+                <ion-input formControlName="cellnumber" type="number" placeholder="Cell Number"></ion-input>
+            </ion-item>
+            <ion-item *ngIf="users.controls.cellnumber.invalid && users.controls.cellnumber.dirty">
+                <p>Please enter Cell Number</p>
+                </ion-item>
         <ion-item>
           
-            <ion-input formControlName="email" type="email" placeholder="Email"></ion-input>
+            <ion-input formControlName="email" type="email" placeholder="Email" [(ngModel)]="email"></ion-input>
   
           </ion-item>
         
@@ -35,22 +45,23 @@
             </ion-item>
           <ion-item>
           
-              <ion-input formControlName="password"  type="password" placeholder="Password"></ion-input>
+              <ion-input formControlName="password"  type="password" placeholder="Password" [(ngModel)]="password"></ion-input>
           </ion-item>
           <ion-item *ngIf="users.controls.password.invalid && users.controls.password.dirty">
               <p>Please enter Password</p>
     
             </ion-item>
-          <button ion-button round outline color="primary" (click)="signup()">SignUP</button>OR
-          <button ion-button round outline color="primary" (click)="login()">Login</button>
+          <button ion-button round outline color="light" (click)="signups()">SignUP</button>OR
+          <button ion-button round outline color="light" (click)="logins()">Login</button>
 
       </ion-list>
     </ion-card-content>
 
   </ion-card>
   <button class="bottom" ion-button clear full color="light">Don't have an account? Sign up</button>
-</div>
-<div *ngIf="display ==1">
+</form>
+<form *ngIf="display ==1" [formGroup]="users" (ngSubmit)="home(login)"  >
+
    
 
         <ion-card>
@@ -59,18 +70,26 @@
             <ion-card-content>
               <ion-list no-line>
                 
-                <ion-item>
-                    <ion-label stacked>Email</ion-label>
-                    <ion-input type="email" placeholder="Email"></ion-input>
-          
-                  </ion-item>
                   <ion-item>
-                      <ion-label stacked>Password</ion-label>
+          
+                      <ion-input formControlName="email" type="email" placeholder="Email"></ion-input>
+            
+                    </ion-item>
                   
-                      <ion-input  type="password" placeholder="Password"></ion-input>
-                  </ion-item>
+                  <ion-item *ngIf="users.controls.email.invalid && users.controls.email.dirty">
+                      <p>Please enter Email</p>
+                      </ion-item>
+                    <ion-item>
+                    
+                        <ion-input formControlName="password"  type="password" placeholder="Password"></ion-input>
+                    </ion-item>
+                    <ion-item *ngIf="users.controls.password.invalid && users.controls.password.dirty">
+                        <p>Please enter Password</p>
+              
+                      </ion-item>
                 
-                  <button ion-button round outline color="primary" (click)="home()">Login</button>
+                  <button ion-button round outline color="light" (click)="home()">Login</button>
+                  <button ion-button round outline color="light" (click)="reset()">Reset</button>
         
               </ion-list>
             </ion-card-content>
@@ -80,9 +99,9 @@
   
     
 
-</div>
-<div *ngIf="display ==2" class="btn">
+
+<!-- <div *ngIf="display ==2" class="btn">
   <button ion-button round outline color="primary" ><ion-icon name="home"></ion-icon></button>
-</div>
+</div> -->
 </form>
 </ion-content>

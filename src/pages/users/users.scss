@@ -1,6 +1,9 @@
 page-users {
     .background{
-        background-image: url(../../assets/imgs/52392_1478584515.jpeg)
+        background-image: url(../../assets/imgs/52392_1478584515.jpeg);
+        background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
     }
     .scroll-content{
         align-content: center;
@@ -14,9 +17,12 @@ page-users {
         background-color: rgba(0,0,0,0.5);
         border-radius: 5px;
     }
-    a, p,
+    a, 
     ion-card-header.card-header{
         color: #fff!important;
+        letter-spacing: 3px;
+        line-height: 2px;
+        
     }
     .list > .item-block:first-child{
         border: medium none;
@@ -60,6 +66,9 @@ page-users {
             margin-top: 10px;
             margin-right: 10px;
         }
+    }
+    p{
+        background-color: red;
     }
 
 }
